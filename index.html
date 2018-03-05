@@ -10,14 +10,19 @@
         <script type="text/javascript">
             angular.module('Aula01', []).controller('MyFirstController', function($scope){
                $scope.leaderName = 'Thiago';
+               $scope.ativo = true;
             })
         </script>
     </head>
 
     <body ng-controller="MyFirstController">
         {{ leaderName }}
+        </br>
+        {{ ativo }}
 
         <input type="text" name="txtLeaderName" ng-model="leaderName"/>
+
+        <input type="checkbox" name="chkAtivo" ng-model="ativo">
     </body>
 
 </html>
