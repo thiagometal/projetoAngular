@@ -9,13 +9,15 @@
 
         <script type="text/javascript">
             angular.module('Aula01', []).controller('MyFirstController', function($scope){
-                $scope.menssageHelloWorld = "Hello World" //primeira variavel de scope
+               $scope.leaderName = 'Thiago';
             })
         </script>
     </head>
 
     <body ng-controller="MyFirstController">
-        {{ menssageHelloWorld }}
+        {{ leaderName }}
+
+        <input type="text" name="txtLeaderName" ng-model="leaderName"/>
     </body>
 
 </html>
