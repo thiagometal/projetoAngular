@@ -46,7 +46,17 @@
                 <div class="card-header"> {{ panelTitle }} </div>
                 <div class="card-body">
                     <ul>
-                        <li ng-repeat="banda in listaBandas"> {{ banda.name }} </li>
+                        <li ng-repeat="banda in listaBandas"> 
+                            <div class="card card-default">
+                                <div class="card-header"> {{ banda.name }} </div>
+                                <div class="panel-body">
+                                    <ul>
+                                        <li> Líder: {{ banda.leader }}</li>
+                                        <li> Ano de Criação: {{ banda.createad_year }}</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
                     </ul>
                 </div>
             </div>
