@@ -27,7 +27,25 @@
                     "createad_year": "1994"
                 };             
 
-                $scope.listaBandas.push($scope.banda01, $scope.banda02);      
+                $scope.listaBandas.push($scope.banda01, $scope.banda02);
+
+                $scope.addBand = function(xName, xLeader, xCreatedYear) {
+                    $scope.listaBandas.push({
+                        name: xName,
+                        leader: xLeader,
+                        createad_year: xCreatedYear
+                    });
+                }
+
+                $scope.deleteBand = function(xName) {
+                    var listaBandasNovas = listaBandas.filter({
+                        function(banda) {
+                            return banda.name != xName;    
+                        }
+                    });
+
+                    $scope.listaBandas = listaBandasNovas; 
+                }      
             })
         </script>
     </head>
