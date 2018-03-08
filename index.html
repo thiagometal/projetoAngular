@@ -40,14 +40,15 @@
                     <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
                 </div>
             </div>
-        </div>
+        
 
-        <div class="panel panel-default">
-            <div class="panel-heading"> {{ panelTitle }} </div>
-            <div class="panel-body">
-                <ul>
-                    <li></li>
-                </ul>
+            <div class="card card-default">
+                <div class="card-header"> {{ panelTitle }} </div>
+                <div class="card-body">
+                    <ul>
+                        <li ng-repeat="banda in listaBandas"> {{ banda.name }} </li>
+                    </ul>
+                </div>
             </div>
         </div>
     </body>
