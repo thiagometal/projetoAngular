@@ -1,5 +1,5 @@
 <!DOCTYPE>
-<html ng-app="Aula04">
+<html ng-app="Aula">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -10,9 +10,11 @@
         <script src="bootstrap-4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
         <script type="text/javascript">
-            angular.module('Aula01', []).controller('MyThirdController', function($scope){
-                $scope.listaBandas = [];
+            angular.module('Aula', []).controller('MyThirdController', function($scope){
+                $scope.panelTitle = 'Lista de Bandas';
 
+                $scope.listaBandas = [];
+                
                 $scope.banda01 = {
                     "name": "Nightwish", 
                     "leader": "Tuomas", 
@@ -31,6 +33,22 @@
     </head>
 
     <body ng-controller="MyThirdController">
-        
+        <div class="container">
+            <div class="jumbotron jumbotron-fluid">
+                <div class="container">
+                    <h1 class="display-4">Projeto Angular</h1>
+                    <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-heading"> {{ panelTitle }} </div>
+            <div class="panel-body">
+                <ul>
+                    <li></li>
+                </ul>
+            </div>
+        </div>
     </body>
 </html>
