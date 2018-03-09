@@ -29,6 +29,8 @@
 
                 $scope.listaBandas.push($scope.banda01, $scope.banda02);
 
+                $scope.showFormAdd = false;
+
                 $scope.addBand = function(xName, xLeader, xCreatedYear) {
                     $scope.listaBandas.push({
                         name: xName,
@@ -38,11 +40,11 @@
                 }
 
                 $scope.deleteBand = function(xName) {
-                    var listaBandasNovas = listaBandas.filter({
+                    var listaBandasNovas = $scope.listaBandas.filter(
                         function(banda) {
                             return banda.name != xName;    
                         }
-                    });
+                    );
 
                     $scope.listaBandas = listaBandasNovas; 
                 }      
@@ -52,14 +54,32 @@
 
     <body ng-controller="MyFourthController">
         <div class="container">
-            <div class="jumbotron jumbotron-fluid">
+            <div class="jumbotron jumbotron-fluid" >
                 <div class="container">
                     <h1 class="display-4">Projeto Angular</h1>
                     <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
+                    <button class="btn btn-default" ng-hide="showFormAdd" ng-click="showFormAdd = true;">Adicionar</button>
+                </div>
+            </div>
+
+            <div class="card card-default" ng-show="showFormAdd"> <!-- Se a variável for definida como verdadeira no controller, então esse componente vai ser mostrado -->
+                <div class="card-header"> Inclusão de Pessoa </div>
+                <div class="card-body">
+                    <div class="form-group">
+                        <label>Nome</label>
+                        <input class="form-default" type="text" ng-model="frmAdd.name"/>
+                    </div>
+                    <div class="form-group">
+                        <label>Líder</label>
+                        <input class="form-default" type="text" ng-model="frmAdd.leader"/>
+                    </div>
+                    <div class="form-group">
+                        <label>Criação</label>
+                        <input class="form-default" type="text" ng-model="frmAdd.createad_year"/>
+                    </div>
                 </div>
             </div>
         
-
             <div class="card card-default">
                 <div class="card-header"> {{ panelTitle }} </div>
                 <div class="card-body">
@@ -72,6 +92,7 @@
                                         <li> Líder: {{ banda.leader }}</li>
                                         <li> Ano de Criação: {{ banda.createad_year }}</li>
                                     </ul>
+                                    <button class="btn btn-default" ng-click="deleteBand(banda.name)">Excluir</button>
                                 </div>
                             </div>
                         </li>
