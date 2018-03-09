@@ -13,6 +13,12 @@
             angular.module('Aula5', []).controller('MyFourthController', function($scope){
                 $scope.panelTitle = 'Lista de Bandas';
 
+                $scope.frmAdd = {
+                    "name":"",
+                    "leader":"",
+                    "createad_year":""
+                };
+
                 $scope.listaBandas = [];
                 
                 $scope.banda01 = {
@@ -31,11 +37,11 @@
 
                 $scope.showFormAdd = false;
 
-                $scope.addBand = function(xName, xLeader, xCreatedYear) {
+                $scope.addBand = function() {
                     $scope.listaBandas.push({
-                        name: xName,
-                        leader: xLeader,
-                        createad_year: xCreatedYear
+                        name: $scope.frmAdd.name,
+                        leader: $scope.frmAdd.leader,
+                        createad_year: $scope.frmAdd.createad_year
                     });
                 }
 
@@ -76,6 +82,9 @@
                     <div class="form-group">
                         <label>Criação</label>
                         <input class="form-default" type="text" ng-model="frmAdd.createad_year"/>
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-default" ng-click="addBand(); showFormAdd = false;">Incluir</button>
                     </div>
                 </div>
             </div>
