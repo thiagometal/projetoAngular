@@ -62,6 +62,8 @@
                         method: 'GET'
                     }).then(function(response) {
                         $scope.listaBandas = response.data;    
+                    }, function(response) {
+                        alert("Error");
                     })
                 }      
             })
