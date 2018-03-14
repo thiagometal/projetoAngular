@@ -10,24 +10,28 @@
         <script src="bootstrap-4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
         <script type="text/javascript">
-            angular.module('Aula6', []).controller('MyFourthController', function($rootScope, $scope, $http){
+            // angular.module('Aula6', []).config(function($sceDelegateProvider) {
+            //     $sceDelegateProvider.resourceUrlWhitelist([
+            //     // Permite carregar recursos da mesmo fonte -> seu host
+            //     'self',
+            //     // Permite carregar de outros dominios registrados
+            //     'https://pt.wikipedia.org/w/api.php?action=query&prop=pageimages%7Cextracts&format=json&piprop=thumbnail%7Cname%7Coriginal&exintro=&explaintext=&redirects=yes&callback=&titles=' + $rootScope.termoBusca
+            // ]);
+
+            angular.module('Aula6', []).controller('MyFourthController', function($rootScope, $scope,$http, $sce){
                 $rootScope.titulo = 'Pesquisar Países';
                 $scope.panelTitle = 'Lista de Países';
-                $scope.termoBusca = 'Finlândia';
+                $rootScope.termoBusca = 'Finlândia';
 
                 $scope.listaPaises = [];
 
                 $scope.loadCountries = function() { 
                     $scope.error = true;
-                    $http({
-                        url: 'bandas.json',
-                        method: 'GET'
-                    }).then(function(response) {
-                        $scope.listaBandas = response.data;    
-                    }, function(response) {
-                        alert("Error");
-                    }).finally(function(){
-                        $scope.error = false;
+                    $scope.teste = $sce.trustAsResourceUrl('https://pt.wikipedia.org/w/api.php?action=query&prop=pageimages%7Cextracts&format=json&piprop=thumbnail%7Cname%7Coriginal&exintro=&explaintext=&redirects=yes&callback=&titles=' + $rootScope.termoBusca);
+                    //console.log($scope.teste.toString());
+                    $http.jsonp($scope.teste.toString()).then(function(response) {
+                         console.log(response);
+                         //$scope.listaPaises = response.data;    
                     })
                 }      
             })
